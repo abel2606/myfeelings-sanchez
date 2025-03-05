@@ -28,19 +28,21 @@ class MainActivity : AppCompatActivity() {
     var verysad = 0.0F
     var data: Boolean = false
     var lista = ArrayList<Emociones>()
-    val graphVeryHappy: View = findViewById(R.id.graphVeryHappy)
-    val graphHappy: View = findViewById(R.id.graphHappy)
-    val graphNeutral: View = findViewById(R.id.graphNeutral)
-    val graphSad: View = findViewById(R.id.graphSad)
-    val graphVerySad: View = findViewById(R.id.graphVerySad)
-    val graph: View = findViewById(R.id.graph)
-    val guardarButton: Button = findViewById(R.id.guardarButton)
-    val veryHappyButton: ImageButton = findViewById(R.id.veryHappyButton)
-    val happyButton: ImageButton = findViewById(R.id.happyButton)
-    val neutralButton: ImageButton = findViewById(R.id.neutralButton)
-    val sadButton: ImageButton = findViewById(R.id.sadButton)
-    val verySadButton: ImageButton = findViewById(R.id.verySadButton)
 
+
+    lateinit var graphVeryHappy: View
+    lateinit var graphHappy: View
+    lateinit var graphNeutral: View
+    lateinit var graphSad: View
+    lateinit var graphVerySad: View
+    lateinit var graph: View
+    lateinit var guardarButton: Button
+    lateinit var veryHappyButton: ImageButton
+    lateinit var happyButton: ImageButton
+    lateinit var neutralButton: ImageButton
+    lateinit var sadButton: ImageButton
+    lateinit var verySadButton: ImageButton
+    lateinit var icon: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +53,20 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        graphVeryHappy = findViewById(R.id.graphVeryHappy)
+        graphHappy = findViewById(R.id.graphHappy)
+        graphNeutral = findViewById(R.id.graphNeutral)
+        graphSad = findViewById(R.id.graphSad)
+        graphVerySad = findViewById(R.id.graphVerySad)
+        graph = findViewById(R.id.graph)
+        guardarButton = findViewById(R.id.guardarButton)
+        veryHappyButton = findViewById(R.id.veryHappyButton)
+        happyButton = findViewById(R.id.happyButton)
+        neutralButton = findViewById(R.id.neutralButton)
+        sadButton = findViewById(R.id.sadButton)
+        verySadButton = findViewById(R.id.verySadButton)
+        icon = findViewById(R.id.icon)
 
         jsonFile = JSONFile()
 
@@ -128,7 +144,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    val icon: ImageView = findViewById(R.id.icon)
     fun iconoMayoria(){
         if(happy>veryHappy && happy>neutral && happy>sad && happy>verysad){
             icon.setImageDrawable(resources.getDrawable(R.drawable.ic_happy))
@@ -143,7 +158,7 @@ class MainActivity : AppCompatActivity() {
             icon.setImageDrawable(resources.getDrawable(R.drawable.ic_sad))
         }
         if(verysad>happy && verysad>neutral && verysad>sad && veryHappy<verysad){
-            icon.setImageDrawable(resources.getDrawable(R.drawable.id_verysad))
+            icon.setImageDrawable(resources.getDrawable(R.drawable.ic_verysad))
         }
     }
 
@@ -196,6 +211,7 @@ class MainActivity : AppCompatActivity() {
                 exception.printStackTrace()
             }
         }
+
         return lista
     }
 
